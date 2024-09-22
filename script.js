@@ -1,27 +1,27 @@
 const arr = [1, 2, 3, 4, 1, 0, 2, 2];
 const divide = (arr, n) => {
-	// Write your code here
+	
 	const result = [];
-	let currSubarray = [];
+	let currSubarray = []; 
 	let currSum = 0;
+
 	for (const num of arr) {
-		if (currentSum + num > n) {
-			// Push the current subarray to the result
-			result.push(currentSubarray);
-		    // Start a new subarray
-		    currentSubarray = [num];
-			currentSum = num; // Reset current sum to the new number
-		} 
+	    if (currSum + num > n) {
+		    result.push(currSubarray);
+		    currSubarray = [num];
+		    currSum = num;
+	    } 
 		else {
-		    currentSubarray.push(num);
-		    currentSum += num;
-		}
+		    currSubarray.push(num);
+		    currSum += num;
+	    }
 	}
-	if (currentSubarray.length > 0) {
-		result.push(currentSubarray);
+	if (currSubarray.length > 0) {
+		result.push(currSubarray);
 	}
 	return result;
 };
 
-const n = prompt("Enter n: ");
-alert(JSON.stringify(divide(arr, n)));
+// Prompt user input for n
+const n = parseInt(prompt("Enter n: "), 10); // Parse the input to ensure it's an integer
+alert(JSON.stringify(divide(arr, n))); // Display the result as a JSON string
